@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Coletando dados do usuário
+            
             System.out.print("Digite o modelo do veículo: ");
             String modelo = scanner.nextLine();
 
@@ -24,14 +24,12 @@ public class Main {
             System.out.print("Digite a quantidade de dias alugados: ");
             int quantidadeDias = scanner.nextInt();
 
-            // Criando o veículo e calculando o custo
             Veiculo veiculo = new Veiculo(modelo, valorDiaria);
             double valorSemDesconto = valorDiaria * quantidadeDias;
 
             double valorComDesconto;
             double desconto = 0;
 
-            // Aplica desconto apenas se não houve atraso e alugado por 7 ou mais dias
             if (quantidadeDiasAtraso == 0 && quantidadeDias >= 7) {
                 valorComDesconto = veiculo.desconto(valorDiaria, quantidadeDias);
                 desconto = valorSemDesconto - valorComDesconto;
@@ -41,7 +39,6 @@ public class Main {
 
             double custoTotal = veiculo.calcularCusto(valorDiaria, quantidadeDias, quantidadeDiasAtraso);
 
-            // Exibindo os resultados
             System.out.printf("Custo total do aluguel do veículo %s: R$ %.2f\n", modelo, custoTotal);
             if (quantidadeDiasAtraso == 0 && quantidadeDias >= 7) {
                 System.out.printf("Valor de desconto aplicado: R$ %.2f\n", desconto);
